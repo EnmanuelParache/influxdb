@@ -6,9 +6,6 @@ import (
 	"github.com/influxdata/flux"
 	"github.com/influxdata/flux/codes"
 	"github.com/influxdata/flux/plan"
-	"github.com/influxdata/flux/runtime"
-	"github.com/influxdata/flux/semantic"
-	"github.com/influxdata/flux/stdlib/influxdata/influxdb"
 	platform "github.com/influxdata/influxdb"
 )
 
@@ -20,10 +17,10 @@ type FromOpSpec struct {
 }
 
 func init() {
-	fromSignature := semantic.MustLookupBuiltinType("influxdata/influxdb", "from")
-	runtime.ReplacePackageValue("influxdata/influxdb", influxdb.FromKind, flux.MustValue(flux.FunctionValue(FromKind, createFromOpSpec, fromSignature)))
-	flux.RegisterOpSpec(FromKind, newFromOp)
-	plan.RegisterProcedureSpec(FromKind, newFromProcedure, FromKind)
+	// fromSignature := semantic.MustLookupBuiltinType("influxdata/influxdb", "from")
+	// runtime.ReplacePackageValue("influxdata/influxdb", influxdb.FromKind, flux.MustValue(flux.FunctionValue(FromKind, createFromOpSpec, fromSignature)))
+	// flux.RegisterOpSpec(FromKind, newFromOp)
+	// plan.RegisterProcedureSpec(FromKind, newFromProcedure, FromKind)
 }
 
 func createFromOpSpec(args flux.Arguments, a *flux.Administration) (flux.OperationSpec, error) {
